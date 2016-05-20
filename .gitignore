@@ -1,0 +1,9 @@
+Clinic.Bisuness.Services/bin
+Clinic.Bisuness.Services/obj
+Clinic.DTO/bin
+Clinic.DTO/obj
+ClinicClient/bin
+ClinicClient/obj
+ClinicWcfService/bin
+ClinicWcfService/obj
+*.suo

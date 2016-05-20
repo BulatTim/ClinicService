@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="7b4deb6f-4f6c-4e27-9c3d-b82e6612bcf8" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:1845/ClinicService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ClinicService1.xsd" MetadataType="Schema" ID="6c5f2a86-1621-4b52-bc45-3feaab8c998d" SourceId="1" SourceUrl="http://localhost:1845/ClinicService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ClinicService2.xsd" MetadataType="Schema" ID="2456c86f-7dca-4939-8a04-f1aa13fb20cf" SourceId="1" SourceUrl="http://localhost:1845/ClinicService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ClinicService.disco" MetadataType="Disco" ID="956cf840-3f40-4bb0-aa4a-00848e690ec5" SourceId="1" SourceUrl="http://localhost:1845/ClinicService.svc?disco" />
+    <MetadataFile FileName="ClinicService.xsd" MetadataType="Schema" ID="a5ac53cf-232c-44b3-945e-e543ea860521" SourceId="1" SourceUrl="http://localhost:1845/ClinicService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ClinicService.wsdl" MetadataType="Wsdl" ID="894a9e05-1f4d-4446-82ab-d06c1765eda6" SourceId="1" SourceUrl="http://localhost:1845/ClinicService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
