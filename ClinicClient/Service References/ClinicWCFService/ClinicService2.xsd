@@ -18,12 +18,68 @@
   <xs:element name="ArrayOfDoctorInfo" nillable="true" type="tns:ArrayOfDoctorInfo" />
   <xs:complexType name="DoctorInfo">
     <xs:sequence>
-      <xs:element minOccurs="0" name="AddressId" type="xs:int" />
+      <xs:element minOccurs="0" name="AddressInfo" nillable="true" type="tns:AddressInfo" />
       <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="SpecialityTitle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Room" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="specialityInfo" nillable="true" type="tns:SpecialityInfo" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="DoctorInfo" nillable="true" type="tns:DoctorInfo" />
+  <xs:complexType name="AddressInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Apartament" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Home" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HousingBody" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Street" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressInfo" nillable="true" type="tns:AddressInfo" />
+  <xs:complexType name="SpecialityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SpecialityInfo" nillable="true" type="tns:SpecialityInfo" />
+  <xs:complexType name="ArrayOfTicketInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TicketInfo" nillable="true" type="tns:TicketInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTicketInfo" nillable="true" type="tns:ArrayOfTicketInfo" />
+  <xs:complexType name="TicketInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="DoctorInfo" nillable="true" type="tns:DoctorInfo" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="PatientInfo" nillable="true" type="tns:PatientInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TicketInfo" nillable="true" type="tns:TicketInfo" />
+  <xs:complexType name="PatientInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="tns:AddressInfo" />
+      <xs:element minOccurs="0" name="Birthdate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FirstName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PatientInfo" nillable="true" type="tns:PatientInfo" />
+  <xs:complexType name="ArrayOfPatientInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PatientInfo" nillable="true" type="tns:PatientInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPatientInfo" nillable="true" type="tns:ArrayOfPatientInfo" />
+  <xs:complexType name="ArrayOfSpecialityInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SpecialityInfo" nillable="true" type="tns:SpecialityInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSpecialityInfo" nillable="true" type="tns:ArrayOfSpecialityInfo" />
 </xs:schema>

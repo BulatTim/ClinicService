@@ -10,5 +10,6 @@ namespace Clinic.Bisuness.Services.Interfaces
     public interface IAuthorizationService
     {
         SessionTokenInfo Authorize(string loginName, string password);
+        void LogOut(SessionTokenInfo sessionTokenInfo);
     }
 }

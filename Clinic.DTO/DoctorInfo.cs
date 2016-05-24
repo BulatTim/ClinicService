@@ -17,8 +17,12 @@ namespace Clinic.DTO
         [DataMember]
         public string LastName { get; set; }
         [DataMember]
-        public int AddressId { get; set; }
+        public AddressInfo AddressInfo { get; set; }
         [DataMember]
-        public string SpecialityTitle { get; set; }
+       
+        public string Room { get; set; }
+
+        [DataMember]
+        public SpecialityInfo specialityInfo { get; set; }
     }
 }

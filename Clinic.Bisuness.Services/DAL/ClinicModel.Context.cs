@@ -13,10 +13,10 @@ namespace Clinic.Bisuness.Services.DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ClinicEntities : DbContext
+    public partial class ClinicContext : DbContext
     {
-        public ClinicEntities()
-            : base("name=ClinicEntities")
+        public ClinicContext()
+            : base("name=ClinicContext")
         {
         }
     

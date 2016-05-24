@@ -37,7 +37,7 @@ namespace ClinicClient
                     Console.WriteLine("Действие не распознано");
                     continue;
                 }
-                CommonAction commonAction = new CommonAction(_clinicServiceClient);
+                var commonAction = new CommonAction(_clinicServiceClient);
                 switch(action)
                 {
                     case 1:

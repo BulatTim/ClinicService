@@ -52,6 +52,9 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -64,6 +67,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DBHelper.cs" />
+    <Compile Include="Classes\Logger.cs" />
     <Compile Include="DAL\Address.cs">
       <DependentUpon>ClinicModel.tt</DependentUpon>
     </Compile>
@@ -109,6 +114,7 @@
     <Compile Include="Implementation\AdminService.cs" />
     <Compile Include="Implementation\AuthorizationService.cs" />
     <Compile Include="Implementation\ReceptionService.cs" />
+    <Compile Include="Implementation\TicketEqualityComparer.cs" />
     <Compile Include="Implementation\ValidationService.cs" />
     <Compile Include="Implementation\CommonService.cs" />
     <Compile Include="Interfaces\IAdminService.cs" />

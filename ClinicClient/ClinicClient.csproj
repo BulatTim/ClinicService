@@ -58,9 +58,11 @@
   <ItemGroup>
     <Compile Include="Application\Admin.cs" />
     <Compile Include="Application\CommonAction.cs" />
+    <Compile Include="Application\CurrentUserInfo.cs" />
     <Compile Include="Application\Reseption.cs" />
     <Compile Include="Application\Authorization.cs" />
     <Compile Include="Application\Program.cs" />
+    <Compile Include="Classes\Validation.cs" />
     <Compile Include="Core\UnityConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\ClinicWCFService\Reference.cs">
@@ -73,7 +75,10 @@
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Clinic.DTO.DoctorInfo.datasource" />
+    <None Include="Properties\DataSources\Clinic.DTO.PatientInfo.datasource" />
     <None Include="Properties\DataSources\Clinic.DTO.SessionTokenInfo.datasource" />
+    <None Include="Properties\DataSources\Clinic.DTO.SpecialityInfo.datasource" />
+    <None Include="Properties\DataSources\Clinic.DTO.TicketInfo.datasource" />
     <None Include="Service References\ClinicWCFService\ClinicService.wsdl" />
     <None Include="Service References\ClinicWCFService\ClinicService.xsd">
       <SubType>Designer</SubType>

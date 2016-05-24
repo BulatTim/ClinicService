@@ -19,6 +19,78 @@
   <wsdl:message name="IClinicService_GetAllDoctors_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAllDoctorsResponse" />
   </wsdl:message>
+  <wsdl:message name="IClinicService_LogOut_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogOut" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_LogOut_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogOutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_GetTickets_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTickets" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_GetTickets_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTicketsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_GetMedicalRecords_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMedicalRecords" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_GetMedicalRecords_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMedicalRecordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_AddMedicalRecord_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddMedicalRecord" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_AddMedicalRecord_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddMedicalRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_AddTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTicket" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_AddTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_RemoveTicket_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveTicket" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_RemoveTicket_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveTicketResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_GetSpecialities_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpecialities" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_GetSpecialities_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSpecialitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_AddSpeciality_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddSpeciality" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_AddSpeciality_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddSpecialityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_AddDoctor_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddDoctor" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_AddDoctor_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddDoctorResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_GetDoctorVisits_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDoctorVisits" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_GetDoctorVisits_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDoctorVisitsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_GetDoctorVisitsByPeriod_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDoctorVisitsByPeriod" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_GetDoctorVisitsByPeriod_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDoctorVisitsByPeriodResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_GetPatientVisits_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPatientVisits" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_GetPatientVisits_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPatientVisitsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IClinicService">
     <wsdl:operation name="Authorize">
       <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/Authorize" message="tns:IClinicService_Authorize_InputMessage" />
@@ -27,6 +99,54 @@
     <wsdl:operation name="GetAllDoctors">
       <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/GetAllDoctors" message="tns:IClinicService_GetAllDoctors_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClinicService/GetAllDoctorsResponse" message="tns:IClinicService_GetAllDoctors_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/LogOut" message="tns:IClinicService_LogOut_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicService/LogOutResponse" message="tns:IClinicService_LogOut_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTickets">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/GetTickets" message="tns:IClinicService_GetTickets_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicService/GetTicketsResponse" message="tns:IClinicService_GetTickets_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMedicalRecords">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/GetMedicalRecords" message="tns:IClinicService_GetMedicalRecords_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicService/GetMedicalRecordsResponse" message="tns:IClinicService_GetMedicalRecords_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddMedicalRecord">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/AddMedicalRecord" message="tns:IClinicService_AddMedicalRecord_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicService/AddMedicalRecordResponse" message="tns:IClinicService_AddMedicalRecord_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/AddTicket" message="tns:IClinicService_AddTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicService/AddTicketResponse" message="tns:IClinicService_AddTicket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveTicket">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/RemoveTicket" message="tns:IClinicService_RemoveTicket_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicService/RemoveTicketResponse" message="tns:IClinicService_RemoveTicket_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecialities">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/GetSpecialities" message="tns:IClinicService_GetSpecialities_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicService/GetSpecialitiesResponse" message="tns:IClinicService_GetSpecialities_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddSpeciality">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/AddSpeciality" message="tns:IClinicService_AddSpeciality_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicService/AddSpecialityResponse" message="tns:IClinicService_AddSpeciality_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddDoctor">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/AddDoctor" message="tns:IClinicService_AddDoctor_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicService/AddDoctorResponse" message="tns:IClinicService_AddDoctor_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDoctorVisits">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/GetDoctorVisits" message="tns:IClinicService_GetDoctorVisits_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicService/GetDoctorVisitsResponse" message="tns:IClinicService_GetDoctorVisits_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDoctorVisitsByPeriod">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/GetDoctorVisitsByPeriod" message="tns:IClinicService_GetDoctorVisitsByPeriod_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicService/GetDoctorVisitsByPeriodResponse" message="tns:IClinicService_GetDoctorVisitsByPeriod_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPatientVisits">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/GetPatientVisits" message="tns:IClinicService_GetPatientVisits_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicService/GetPatientVisitsResponse" message="tns:IClinicService_GetPatientVisits_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IClinicService" type="tns:IClinicService">
@@ -42,6 +162,114 @@
     </wsdl:operation>
     <wsdl:operation name="GetAllDoctors">
       <soap:operation soapAction="http://tempuri.org/IClinicService/GetAllDoctors" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogOut">
+      <soap:operation soapAction="http://tempuri.org/IClinicService/LogOut" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTickets">
+      <soap:operation soapAction="http://tempuri.org/IClinicService/GetTickets" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMedicalRecords">
+      <soap:operation soapAction="http://tempuri.org/IClinicService/GetMedicalRecords" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddMedicalRecord">
+      <soap:operation soapAction="http://tempuri.org/IClinicService/AddMedicalRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTicket">
+      <soap:operation soapAction="http://tempuri.org/IClinicService/AddTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveTicket">
+      <soap:operation soapAction="http://tempuri.org/IClinicService/RemoveTicket" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSpecialities">
+      <soap:operation soapAction="http://tempuri.org/IClinicService/GetSpecialities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddSpeciality">
+      <soap:operation soapAction="http://tempuri.org/IClinicService/AddSpeciality" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddDoctor">
+      <soap:operation soapAction="http://tempuri.org/IClinicService/AddDoctor" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDoctorVisits">
+      <soap:operation soapAction="http://tempuri.org/IClinicService/GetDoctorVisits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDoctorVisitsByPeriod">
+      <soap:operation soapAction="http://tempuri.org/IClinicService/GetDoctorVisitsByPeriod" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPatientVisits">
+      <soap:operation soapAction="http://tempuri.org/IClinicService/GetPatientVisits" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

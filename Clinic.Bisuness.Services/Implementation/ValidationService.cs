@@ -4,21 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Clinic.Bisuness.Services.DAL;
+using Clinic.Bisuness.Services.Classes;
 
 namespace Clinic.Bisuness.Services.Implementation
 {
-   public class ValidationService
+   public static class ValidationService
     {
-        public bool IsValidToken(Guid giud)
+       /// <summary>
+       /// Checks correctness of the guid. 
+       /// </summary>
+       /// <param name="giud"></param>
+       /// <returns></returns>
+        public static bool IsValidToken(Guid giud)
         {
-            SessionToken sessionToken;
-            using(var db=new ClinicEntities())
-            {
-                sessionToken = db.SessionToken.Find(giud);
-            }
-            if (sessionToken != null)
-                return true;
-            return false;
+            return DBHelper.ExecuteWithoutGuid(context =>context.SessionToken.Find(giud) != null);
         }
     }
 }

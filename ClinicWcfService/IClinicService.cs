@@ -18,6 +18,36 @@ namespace ClinicWcfService
         [OperationContract]
         IList<DoctorInfo> GetAllDoctors(Guid guid);
 
+        [OperationContract]
+        void LogOut(SessionTokenInfo sessionTokenInfo);
+
+        [OperationContract]
+        IList<TicketInfo> GetTickets(int doctorId, DateTime date,Guid guid);
+
+        [OperationContract]
+        IList<PatientInfo> GetMedicalRecords(Guid guid);
+
+        [OperationContract]
+        int AddMedicalRecord(PatientInfo patientInfo, Guid guid);
         
+        [OperationContract]
+        bool AddTicket(TicketInfo ticketInfo, Guid guid);
+
+        [OperationContract]
+        bool RemoveTicket(int ticketId, Guid guid);
+        [OperationContract]
+        List<SpecialityInfo> GetSpecialities(Guid guid);
+
+        [OperationContract]
+        bool AddSpeciality(string title, Guid guid);
+        [OperationContract]
+        bool AddDoctor(DoctorInfo doctorInfo, Guid guid);
+        [OperationContract]
+        List<TicketInfo> GetDoctorVisits(int doctorID, DateTime date, Guid guid);
+        [OperationContract]
+        List<TicketInfo> GetDoctorVisitsByPeriod(int doctorID, DateTime beginDate, DateTime endDate, Guid guid);
+
+        [OperationContract]
+        List<TicketInfo> GetPatientVisits(int patientId, Guid guid);
     }
 }

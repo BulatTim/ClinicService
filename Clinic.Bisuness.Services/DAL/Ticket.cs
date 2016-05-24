@@ -16,9 +16,8 @@ namespace Clinic.Bisuness.Services.DAL
     {
         public int Id { get; set; }
         public int DoctorId { get; set; }
-        public Nullable<int> PatientId { get; set; }
+        public int PatientId { get; set; }
         public System.DateTime DateTime { get; set; }
-        public string Room { get; set; }
     
         public virtual Doctor Doctor { get; set; }
         public virtual Patient Patient { get; set; }

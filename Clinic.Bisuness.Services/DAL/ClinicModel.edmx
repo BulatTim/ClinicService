@@ -25,6 +25,7 @@
           <Property Name="LastName" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="AddressId" Type="int" Nullable="false" />
           <Property Name="SpecialityId" Type="int" Nullable="false" />
+          <Property Name="Room" Type="nvarchar" MaxLength="4" Nullable="false" />
         </EntityType>
         <EntityType Name="Patient">
           <Key>
@@ -74,9 +75,8 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="DoctorId" Type="int" Nullable="false" />
-          <Property Name="PatientId" Type="int" />
+          <Property Name="PatientId" Type="int" Nullable="false" />
           <Property Name="DateTime" Type="datetime" Nullable="false" />
-          <Property Name="Room" Type="nvarchar" MaxLength="4" Nullable="false" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -148,7 +148,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ticket_Patient">
-          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Patient">
@@ -253,6 +253,7 @@
           <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="AddressId" Type="Int32" Nullable="false" />
           <Property Name="SpecialityId" Type="Int32" Nullable="false" />
+          <Property Name="Room" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Address" Relationship="Self.FK_Doctor_Address" FromRole="Doctor" ToRole="Address" />
           <NavigationProperty Name="Speciality" Relationship="Self.FK_Doctor_Speciality" FromRole="Doctor" ToRole="Speciality" />
           <NavigationProperty Name="Ticket" Relationship="Self.FK_Ticket_Doctor" FromRole="Doctor" ToRole="Ticket" />
@@ -311,9 +312,8 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DoctorId" Type="Int32" Nullable="false" />
-          <Property Name="PatientId" Type="Int32" />
+          <Property Name="PatientId" Type="Int32" Nullable="false" />
           <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Room" Type="String" MaxLength="4" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Doctor" Relationship="Self.FK_Ticket_Doctor" FromRole="Ticket" ToRole="Doctor" />
           <NavigationProperty Name="Patient" Relationship="Self.FK_Ticket_Patient" FromRole="Ticket" ToRole="Patient" />
         </EntityType>
@@ -390,7 +390,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Ticket_Patient">
-          <End Role="Patient" Type="Self.Patient" Multiplicity="0..1" />
+          <End Role="Patient" Type="Self.Patient" Multiplicity="1" />
           <End Role="Ticket" Type="Self.Ticket" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Patient">
@@ -425,7 +425,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ClinicEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="ClinicContext" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Address" EntityType="Self.Address" />
           <EntitySet Name="Doctor" EntityType="Self.Doctor" />
           <EntitySet Name="Patient" EntityType="Self.Patient" />
@@ -473,7 +473,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ClinicModelStoreContainer" CdmEntityContainer="ClinicEntities1">
+        <EntityContainerMapping StorageEntityContainer="ClinicModelStoreContainer" CdmEntityContainer="ClinicContext">
           <EntitySetMapping Name="Address">
             <EntityTypeMapping TypeName="ClinicModel.Address">
               <MappingFragment StoreEntitySet="Address">
@@ -494,6 +494,7 @@
                 <ScalarProperty Name="LastName" ColumnName="LastName" />
                 <ScalarProperty Name="AddressId" ColumnName="AddressId" />
                 <ScalarProperty Name="SpecialityId" ColumnName="SpecialityId" />
+                <ScalarProperty Name="Room" ColumnName="Room" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -551,7 +552,6 @@
                 <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
                 <ScalarProperty Name="PatientId" ColumnName="PatientId" />
                 <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-                <ScalarProperty Name="Room" ColumnName="Room" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

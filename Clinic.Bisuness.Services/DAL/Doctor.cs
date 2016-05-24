@@ -24,6 +24,7 @@ namespace Clinic.Bisuness.Services.DAL
         public string LastName { get; set; }
         public int AddressId { get; set; }
         public int SpecialityId { get; set; }
+        public string Room { get; set; }
     
         public virtual Address Address { get; set; }
         public virtual Speciality Speciality { get; set; }

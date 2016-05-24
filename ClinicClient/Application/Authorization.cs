@@ -12,7 +12,7 @@ using ClinicClient.ClinicWCFService;
 
 namespace ClinicClient
 {
-    class Authorization 
+    public class Authorization 
     {
         private readonly IClinicService _clinicServiceClient;
 
@@ -20,12 +20,20 @@ namespace ClinicClient
         {
             _clinicServiceClient = clinicServiceClient;
         }
+        /// <summary>
+        /// Creates new session for entering username and password.
+        /// </summary>
+        /// <returns></returns>
         public SessionTokenInfo Authorize()
         {
-            Console.WriteLine("Введите имя пользователя");
-            string userName = Console.ReadLine();
-            Console.WriteLine("Введите пароль");
-            string password = Console.ReadLine();
+            //Console.WriteLine("Введите имя пользователя");
+            //string userName = Console.ReadLine();
+            //Console.WriteLine("Введите пароль");
+            //string password = Console.ReadLine();
+
+            string userName = "User";
+            string password = "123";
+
             SessionTokenInfo sessionTokenInfo=null;
             try
             {
@@ -36,6 +44,14 @@ namespace ClinicClient
                 Console.WriteLine(err.Message);
             }     
             return sessionTokenInfo;
+        }
+        /// <summary>
+        /// Ends current session.
+        /// </summary>
+        /// <param name="sessionTokenInfo"></param>
+        public void LogOut(SessionTokenInfo sessionTokenInfo)
+        {
+            _clinicServiceClient.LogOut(sessionTokenInfo);
         }
         
     }
