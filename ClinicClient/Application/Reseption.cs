@@ -32,7 +32,8 @@ namespace ClinicClient
                 Console.WriteLine("4-Просмотр посещений врачей пациентом");
                 Console.WriteLine("0-Выход");
                 var action = Validation.ValidateInput(0, 5);
-                DoAction(new ClinicEventArgs(action, "Reseption"));
+                //DoAction(new ClinicEventArgs(action, "Reseption"));
+                Initialize(action, "Reseption");
                
             }
         }
@@ -41,7 +42,7 @@ namespace ClinicClient
         /// <summary>
         /// Does action with tickets
         /// </summary>
-               public void DoActionWithTickets(object sender, ClinicEventArgs e)
+               public void DoActionWithTickets()
         {
 
             var docrotsList = _clinicServiceClient.GetAllDoctors(CurrentUserInfo.sessionTokenInfo.Guid);

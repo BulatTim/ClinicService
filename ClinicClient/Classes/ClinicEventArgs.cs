@@ -8,14 +8,16 @@ namespace ClinicClient.Classes
 {
     public class ClinicEventArgs:EventArgs
     {
-        private int action;
-        private string role;
-        public ClinicEventArgs(int action,string role)
+        //private int action;
+        //private string role;
+        private Action action;
+        public ClinicEventArgs(Action action)
         {
             this.action = action;
-            this.role = role;
+
         }
-        public int Action { get { return action; } }
-        public string Role { get { return role; } }
+
+        public Action Action { get { return action; } }
+        //public string Role { get { return role; } }
     }
 }

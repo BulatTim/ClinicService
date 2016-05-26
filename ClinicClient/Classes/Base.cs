@@ -22,72 +22,76 @@ namespace ClinicClient.Classes
         public static Admin admin { get; set; }
         public static Authorization authorization { get; set; }
         public static Reseption reseption { get; set; }
-        public void Initialize(ClinicEventArgs e)
+        public void Initialize(int actionNumber, string role)
         {
-
-
-            switch (e.Role)
+            ClinicEventArgs e=null;
+            switch (role)
             {
                 case "Admin":
-                    switch (e.Action)
+                    switch (actionNumber)
                     {
                         case 1:
-                            NewAction += commonAction.ShowAllDoctors;
+                            e = new ClinicEventArgs(commonAction.ShowAllDoctors);
                             break;
                         case 2:
-                            NewAction += admin.AddDoctor;
+                            e = new ClinicEventArgs(admin.AddDoctor);
                             break;
                         case 3:
-                            NewAction += admin.AddSpeciality;
+                            e = new ClinicEventArgs(admin.AddSpeciality);
                             break;
                         case 4:
-                            NewAction += commonAction.GetDoctorVisits;
+                            e = new ClinicEventArgs(commonAction.GetDoctorVisits);
                             break;
                         case 5:
-                            NewAction += commonAction.GetPatientVisits;
+                            e = new ClinicEventArgs(commonAction.GetPatientVisits);
                             break;
                         case 0:
-                            NewAction += authorization.LogOut;
-                            return;
+                            e = new ClinicEventArgs(authorization.LogOut);
+                            break;
                     }
+                    AdminAction += new Handler().DoAction;
                     break;
+
                 case "Reseption":
-                    switch (e.Action)
+                    switch (actionNumber)
                     {
                         case 1:
-                            NewAction += commonAction.ShowAllDoctors;
+                            e = new ClinicEventArgs(commonAction.ShowAllDoctors);
                             break;
                         case 2:
-                            NewAction += reseption.DoActionWithTickets;
+                            e = new ClinicEventArgs(reseption.DoActionWithTickets);
                             break;
                         case 3:
-                            NewAction += commonAction.GetDoctorVisits;
+                            e = new ClinicEventArgs(commonAction.GetDoctorVisits);
                             break;
                         case 4:
-                            NewAction += commonAction.GetPatientVisits;
+                            e = new ClinicEventArgs(commonAction.GetPatientVisits);
                             break;
                         case 0:
-                            NewAction += authorization.LogOut;
-                            return;
+                            e = new ClinicEventArgs(authorization.LogOut);
+                            break;
                     }
+                    ReceptionAction += new Handler().DoAction;
                     break;
             }
-
-        }
-        public event EventHandler<ClinicEventArgs> NewAction;
-
-        private void RaiseEvent(ClinicEventArgs e)
-        {
-            if(NewAction!=null)
-            {
-                NewAction(this, e);
-                NewAction = null;
-            }
-        }
-        public void DoAction(ClinicEventArgs e)
-        {
-            Initialize(e);
+            
             RaiseEvent(e);
         }
+        public static  event EventHandler<ClinicEventArgs> AdminAction;
+        public static event EventHandler<ClinicEventArgs> ReceptionAction;
+        private void RaiseEvent(ClinicEventArgs e)
+        {
+            if (AdminAction != null)
+            {
+                AdminAction(this, e);
+            }
+            if (ReceptionAction != null)
+            {
+                ReceptionAction(this,e);
+            }
+            
+        }
+
+        
     }
 }

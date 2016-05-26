@@ -50,7 +50,7 @@ namespace ClinicClient
         /// <summary>
         /// Ends current session.
         /// </summary>
-        public void LogOut(object sender, ClinicEventArgs e)
+        public void LogOut()
         {
             _clinicServiceClient.LogOut(CurrentUserInfo.sessionTokenInfo);
             Environment.Exit(0);

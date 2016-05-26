@@ -47,13 +47,13 @@ namespace ClinicClient
                 Console.WriteLine("5-Просмотр посещений врачей пациентом");
                 Console.WriteLine("0-Выход");
                 var action = Validation.ValidateInput(0, 5);
-                DoAction(new ClinicEventArgs(action,"Admin"));
+                Initialize(action, "Admin");
             }
         }
         /// <summary>
         /// Adds new speciality in database.
         /// </summary>
-        public void AddSpeciality(object sender, ClinicEventArgs e)
+        public void AddSpeciality()
         {
             var specialityInfoList = _clinicServiceClient.GetSpecialities(CurrentUserInfo.sessionTokenInfo.Guid);
             for(var i=1;i<=specialityInfoList.Count;i++)
@@ -84,7 +84,7 @@ namespace ClinicClient
         /// <summary>
         /// Adds new doctor in database.
         /// </summary>
-        public void AddDoctor(object sender, ClinicEventArgs e)
+        public void AddDoctor()
         {
             var specialityInfoList = _clinicServiceClient.GetSpecialities(CurrentUserInfo.sessionTokenInfo.Guid);
             for (var i = 1; i <= specialityInfoList.Count; i++)

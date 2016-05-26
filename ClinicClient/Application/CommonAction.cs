@@ -22,7 +22,7 @@ namespace ClinicClient.Application
        /// <summary>
        /// Shows all doctors.
        /// </summary>
-        public void ShowAllDoctors(object sender,ClinicEventArgs e)
+        public void ShowAllDoctors()
        {
            var docrotsList = _clinicServiceClient.GetAllDoctors(CurrentUserInfo.sessionTokenInfo.Guid);
            var groupList = docrotsList.GroupBy(d => d.specialityInfo.Title);
@@ -84,7 +84,7 @@ namespace ClinicClient.Application
        /// <summary>
        /// Shows all patient's visits to doctor.
        /// </summary>
-        public void GetPatientVisits(object sender, ClinicEventArgs  e)
+        public void GetPatientVisits()
        {
            var patientInfo = new CommonAction(_clinicServiceClient).GetMedicalRecords();
            var ticketInfoList = _clinicServiceClient.GetPatientVisits(patientInfo.Id, CurrentUserInfo.sessionTokenInfo.Guid);
@@ -148,7 +148,7 @@ namespace ClinicClient.Application
        /// <summary>
        /// Shows all doctor's visits on date.
        /// </summary>
-        public void GetDoctorVisits(object sender, ClinicEventArgs e)
+        public void GetDoctorVisits()
        {
            var docrotsList = _clinicServiceClient.GetAllDoctors(CurrentUserInfo.sessionTokenInfo.Guid);
            var groups = docrotsList.Select(d => d.specialityInfo.Title).Distinct().ToList();
@@ -221,6 +221,7 @@ namespace ClinicClient.Application
        //    var authorization = Program.unityContainer.Resolve<Authorization>();
        //    authorization.LogOut(CurrentUserInfo.sessionTokenInfo);
        //}
-       
+
+
     }
 }
