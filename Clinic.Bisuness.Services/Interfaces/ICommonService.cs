@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Clinic.DTO;
+using Clinic.Bisuness.Services.Implementation;
 
 namespace Clinic.Bisuness.Services.Interfaces
 {
@@ -11,13 +12,9 @@ namespace Clinic.Bisuness.Services.Interfaces
     {
        List<DoctorInfo> GetAllDoctors(Guid guid);
 
-       List<TicketInfo> GetTickets(int doctorId,DateTime date,Guid guid);
-       List<PatientInfo> GetMedicalRecords(Guid guid);
 
-       int AddMedicalRecord(PatientInfo patientInfo, Guid guid);
-
-       bool AddTicket(TicketInfo ticketInfo, Guid guid);
-
-       bool RemoveTicket(int ticketId, Guid guid);
+       List<TicketInfo> ShowDoctorVisits(int doctorID, DateTime date, Guid guid);
+       List<TicketInfo> ShowDoctorVisits(int doctorID, DateTime beginDate, DateTime endDate, Guid guid);
+       List<TicketInfo> GetPatientVisits(int patientId, Guid guid);
     }
 }

@@ -16,6 +16,8 @@ namespace Clinic.Bisuness.Services.Implementation
         /// <summary>
         /// Starts new session.
         /// </summary>
+
+        [HandleError(true)]
         public SessionTokenInfo Authorize(string loginName, string password)
         {
             return DBHelper.ExecuteWithoutGuid(context =>
@@ -26,8 +28,8 @@ namespace Clinic.Bisuness.Services.Implementation
                     throw new FaultException("Введены неверные имя пользователя или пароль");
 
                 }
-                string role = currentUser.Role.Title;
-                SessionToken sessionToken = context.SessionToken.FirstOrDefault(u => u.DoctorId == currentUser.DoctorId);
+                var role = currentUser.Role.Title;
+                var sessionToken = context.SessionToken.FirstOrDefault(u => u.DoctorId == currentUser.DoctorId);
                 if (sessionToken == null)
                 {
                     sessionToken = new SessionToken
@@ -55,6 +57,7 @@ namespace Clinic.Bisuness.Services.Implementation
         /// <summary>
         /// Closes currents session.
         /// </summary>
+         [HandleError(true)]
         public void LogOut(SessionTokenInfo sessionTokenInfo)
         {
             DBHelper.ExecuteWithoutGuid(context =>
@@ -62,6 +65,7 @@ namespace Clinic.Bisuness.Services.Implementation
                 var sessionToken = context.SessionToken.FirstOrDefault(s => s.Guid == sessionTokenInfo.Guid);
                 context.SessionToken.Remove(sessionToken);
                 context.SaveChanges();
+                
             });
         }
     }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Clinic.DTO;
 using ClinicClient.Application;
+using ClinicClient.Classes;
 using ClinicClient.Core;
 using Microsoft.Practices.Unity;
 
@@ -16,9 +17,13 @@ namespace ClinicClient
         public static UnityContainer unityContainer;
         static void Main(string[] args)
         {
+            
             unityContainer = new UnityContainer();
             UnityConfig.Initialize(unityContainer);
             CurrentUserInfo.sessionTokenInfo = unityContainer.Resolve<Authorization>("authorization").Authorize();
+            
+            
+
             if (CurrentUserInfo.sessionTokenInfo != null)
             {
                 switch (CurrentUserInfo.sessionTokenInfo.Role)
@@ -29,6 +34,9 @@ namespace ClinicClient
                         adminService.ChooseOperation();
                         break;
                     case "User":
+                        Console.WriteLine("Медрегистратор");
+                        var receptionServise = unityContainer.Resolve<Reseption>();
+                        receptionServise.ChooseOperation();
                         break;
                     default:
                         break;

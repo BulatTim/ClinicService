@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ServiceModel;
 using Clinic.DTO;
+using ClinicClient.Application;
 using ClinicClient.ClinicWCFService;
+using ClinicClient.Classes;
 
 
 
@@ -26,13 +28,13 @@ namespace ClinicClient
         /// <returns></returns>
         public SessionTokenInfo Authorize()
         {
-            //Console.WriteLine("Введите имя пользователя");
-            //string userName = Console.ReadLine();
-            //Console.WriteLine("Введите пароль");
-            //string password = Console.ReadLine();
+            Console.WriteLine("Введите имя пользователя");
+            var userName = Console.ReadLine();
+            Console.WriteLine("Введите пароль");
+            var password = Console.ReadLine();
 
-            string userName = "User";
-            string password = "123";
+            //string userName = "User";
+            //string password = "123";
 
             SessionTokenInfo sessionTokenInfo=null;
             try
@@ -48,10 +50,10 @@ namespace ClinicClient
         /// <summary>
         /// Ends current session.
         /// </summary>
-        /// <param name="sessionTokenInfo"></param>
-        public void LogOut(SessionTokenInfo sessionTokenInfo)
+        public void LogOut(object sender, ClinicEventArgs e)
         {
-            _clinicServiceClient.LogOut(sessionTokenInfo);
+            _clinicServiceClient.LogOut(CurrentUserInfo.sessionTokenInfo);
+            Environment.Exit(0);
         }
         
     }

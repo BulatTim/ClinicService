@@ -68,7 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\DBHelper.cs" />
+    <Compile Include="Classes\Invoker.cs" />
     <Compile Include="Classes\Logger.cs" />
+    <Compile Include="Classes\HandleErrorAttribute.cs" />
     <Compile Include="DAL\Address.cs">
       <DependentUpon>ClinicModel.tt</DependentUpon>
     </Compile>

@@ -62,6 +62,8 @@
     <Compile Include="Application\Reseption.cs" />
     <Compile Include="Application\Authorization.cs" />
     <Compile Include="Application\Program.cs" />
+    <Compile Include="Classes\Base.cs" />
+    <Compile Include="Classes\ClinicEventArgs.cs" />
     <Compile Include="Classes\Validation.cs" />
     <Compile Include="Core\UnityConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -8,12 +8,15 @@ using System.Text;
 using Clinic.Bisuness.Services.Implementation;
 using Clinic.DTO;
 using Clinic.Bisuness.Services.Interfaces;
+using Clinic.Bisuness.Services.Classes;
 using Microsoft.Practices.Unity;
 
 namespace ClinicWcfService
 {
     public class ClinicService : IClinicService
     {
+        public delegate List<SpecialityInfo> smtdlg(Guid guid);
+        
         #region
         public static UnityContainer unityContainer;
         protected IAuthorizationService AuthorizationService { get; set; }
@@ -36,61 +39,80 @@ namespace ClinicWcfService
 
         public SessionTokenInfo Authorize(string userName, string password)
         {
-            return AuthorizationService.Authorize(userName, password);
+          
+            return Invoker.Invoke(AuthorizationService.Authorize, userName, password);
         }
+        
         public IList<DoctorInfo> GetAllDoctors(Guid guid)
         {
-            return CommonService.GetAllDoctors(guid);
+            
+            return Invoker.Invoke(CommonService.GetAllDoctors, guid);
         }
         public void LogOut(SessionTokenInfo sessionTokenInfo)
         {
-            AuthorizationService.LogOut(sessionTokenInfo);
+            
+            Invoker.InvokeAction(AuthorizationService.LogOut, sessionTokenInfo);
+
         }
         public IList<TicketInfo> GetTickets(int doctorId, DateTime date, Guid guid)
         {
-            return CommonService.GetTickets(doctorId, date, guid);
+
+            return Invoker.Invoke(ReceptionService.GetTickets, doctorId, date, guid);
         }
 
         public IList<PatientInfo> GetMedicalRecords(Guid guid)
         {
-            return CommonService.GetMedicalRecords(guid);
+
+            return Invoker.Invoke(ReceptionService.GetMedicalRecords, guid);
         }
         public int AddMedicalRecord(PatientInfo patientInfo, Guid guid)
         {
-            return CommonService.AddMedicalRecord(patientInfo, guid);
+
+            return Invoker.Invoke(ReceptionService.AddMedicalRecord, patientInfo, guid);
         }
         public bool AddTicket(TicketInfo ticketInfo, Guid guid)
         {
-            
-            return CommonService.AddTicket(ticketInfo,guid);
+
+
+            return Invoker.Invoke(ReceptionService.AddTicket, ticketInfo, guid);
         }
         public bool RemoveTicket(int ticketId, Guid guid)
         {
-            return CommonService.RemoveTicket(ticketId, guid);
+
+            return Invoker.Invoke(ReceptionService.RemoveTicket, ticketId, guid);
         }
         public List<SpecialityInfo> GetSpecialities(Guid guid)
         {
-            return AdminService.GetSpecialities(guid);
+            
+            
+            
+            return Invoker.Invoke(AdminService.GetSpecialities, guid);
+            
         }
         public bool AddSpeciality(string title,Guid guid)
         {
-            return AdminService.AddSpeciality(title, guid);
+            
+            return Invoker.Invoke(AdminService.AddSpeciality,title, guid);
         }
         public bool AddDoctor(DoctorInfo doctorInfo, Guid guid)
         {
-            return AdminService.AddDoctor(doctorInfo, guid);
+           
+            return Invoker.Invoke(AdminService.AddDoctor, doctorInfo, guid);
         }
          public List<TicketInfo> GetDoctorVisits(int doctorID, DateTime date, Guid guid)
         {
-            return AdminService.ShowDoctorVisits(doctorID, date, guid);
+
+            return Invoker.Invoke(CommonService.ShowDoctorVisits, doctorID, date, guid);
         }
          public List<TicketInfo> GetDoctorVisitsByPeriod(int doctorID, DateTime beginDate, DateTime endDate, Guid guid)
          {
-             return AdminService.ShowDoctorVisits(doctorID, beginDate, endDate, guid);
+             return Invoker.Invoke(CommonService.ShowDoctorVisits, doctorID, beginDate, endDate, guid);
+             
          }
          public List<TicketInfo> GetPatientVisits(int patientId, Guid guid)
          {
-             return AdminService.GetPatientVisits(patientId, guid);
+
+             return Invoker.Invoke(CommonService.GetPatientVisits, patientId, guid);
          }
     }
         
