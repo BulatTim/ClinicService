@@ -50,6 +50,43 @@ namespace Clinic.Bisuness.Services.Classes
                 throw;
             }
         }
+
+        public static void InvokeAction<T1,T2>(Action<T1,T2> methodToInvoke, T1 t1,T2 t2)
+        {
+            var isLogEnable = false;
+            try
+            {
+
+                var attributeArray = methodToInvoke.Method.GetCustomAttributes(typeof(HandleErrorAttribute), false);
+                if (attributeArray.Length > 0)
+                {
+                    var loggerAttribute = attributeArray[0] as HandleErrorAttribute;
+                    if (loggerAttribute != null)
+                    {
+                        isLogEnable = loggerAttribute.IsLogEnable;
+                    }
+                }
+                methodToInvoke(t1,t2);
+            }
+            catch (ArgumentException exception)
+            {
+
+                if (isLogEnable)
+                {
+                    Logger.Error(exception);
+                }
+                throw;
+            }
+            catch (NullReferenceException exception)
+            {
+
+                if (isLogEnable)
+                {
+                    Logger.Warn(exception);
+                }
+                throw;
+            }
+        }
         public static T2 Invoke<T1,T2>(Func<T1,T2> methodToInvoke, T1 t1)
         {
             var isLogEnable = false;

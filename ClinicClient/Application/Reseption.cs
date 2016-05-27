@@ -72,6 +72,16 @@ namespace ClinicClient
             var ticketList = _clinicServiceClient.GetTickets(doctors[doctorNumber - 1].Id, date, CurrentUserInfo.sessionTokenInfo.Guid);
             Console.WriteLine("{0,2} {1,5} {2,-26}", "№", "Время", "         пациент");
             Console.WriteLine("------------------------------------------------------");
+
+            //foreach (var ticket in ticketList)
+            //{
+            //    if (ticket.PatientInfo!=null && ticket.PatientInfo.LastName == "reserved")
+            //    {
+            //        ticket.PatientInfo.FirstName = "Зарезервирован";
+            //        ticket.PatientInfo.LastName = "";
+            //    }
+            //}
+
             for (var i = 1; i <= ticketList.Count; i++)
             {
                 Console.WriteLine("{0,2} {1,5} {2,-13} {3,-13}", i, ticketList[i - 1].DateTime.ToString("HH:mm"),
@@ -112,12 +122,14 @@ namespace ClinicClient
         public void AddNewTicket(List<TicketInfo> ticketList, DoctorInfo doctor)
         {
             var ticketNumber = 0;
+            int ticketId = 0;
             for (; ; )
             {
                 Console.WriteLine("Введите номер талона");
                 ticketNumber = Validation.ValidateInput(1, ticketList.Count);
                 if (ticketList[ticketNumber - 1].PatientInfo == null)
                 {
+                    
                     Console.WriteLine("------------------------------------------------------");
                     Console.WriteLine("Талон №{0} дата:{1} врач: {2} {3} - {4}, каб. {5}",
                     ticketNumber, ticketList[ticketNumber - 1].DateTime.ToString("dd MMM HH:mm"), doctor.LastName,
@@ -130,6 +142,7 @@ namespace ClinicClient
                     switch (actionWithAvaliableTicket)
                     {
                         case 1:
+                          ticketId=  _clinicServiceClient.SetReservation(ticketList[ticketNumber - 1], CurrentUserInfo.sessionTokenInfo.Guid);//create temporary ticket
                             break;
                         case 2:
                             continue;
@@ -174,12 +187,14 @@ namespace ClinicClient
                         patientInfo = AddMedicalRecord();
                         break;
                     case 0:
+                        _clinicServiceClient.AbortReservation(ticketId);
                         return;
                 }
                 if (patientInfo == null)
                     continue;
                 var newTicket = new TicketInfo
                 {
+                    Id=ticketId,
                     DoctorInfo = new DoctorInfo { Id = doctor.Id },
                     DateTime = ticketList[ticketNumber - 1].DateTime,
                     PatientInfo = new PatientInfo { Id = patientInfo.Id }
@@ -211,6 +226,12 @@ namespace ClinicClient
                 Console.WriteLine("Талон не может быть удален т.к. он не забронирован");
                 return;
             }
+            //if (ticketList[removeTicketNumber - 1].PatientInfo != null &&
+            //    ticketList[removeTicketNumber - 1].PatientInfo.LastName == "reserved")
+            //{
+            //    Console.WriteLine("Талон не может быть удален т.к. он забронирован");
+            //    return;
+            //}
             Console.WriteLine("------------------------------------------------------");
             Console.WriteLine("Талон №{0} дата:{1} врач: {2} {3} - {4}, каб. {5}",
             removeTicketNumber, ticketList[removeTicketNumber - 1].DateTime, doctor.LastName,

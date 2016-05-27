@@ -9,7 +9,7 @@ namespace Clinic.Bisuness.Services.Interfaces
 {
     public interface IReceptionService
     {
-        List<TicketInfo> GetTickets(int doctorId, DateTime date, Guid guid);
+        List<TicketInfo> GetTickets(int doctorId, DateTime date, Guid guid,double timeout);
         List<PatientInfo> GetMedicalRecords(Guid guid);
 
         int AddMedicalRecord(PatientInfo patientInfo, Guid guid);
@@ -17,5 +17,8 @@ namespace Clinic.Bisuness.Services.Interfaces
         bool AddTicket(TicketInfo ticketInfo, Guid guid);
 
         bool RemoveTicket(int ticketId, Guid guid);
+
+        int SetReservation(TicketInfo ticketInfo, Guid guid);
+        void AbortReservation(int ticketId);
     }
 }

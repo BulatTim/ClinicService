@@ -16,6 +16,7 @@ namespace Clinic.Bisuness.Services.DAL
     {
         public Doctor()
         {
+            this.ReservedTickets = new HashSet<ReservedTickets>();
             this.Ticket = new HashSet<Ticket>();
         }
     
@@ -28,6 +29,7 @@ namespace Clinic.Bisuness.Services.DAL
     
         public virtual Address Address { get; set; }
         public virtual Speciality Speciality { get; set; }
+        public virtual ICollection<ReservedTickets> ReservedTickets { get; set; }
         public virtual ICollection<Ticket> Ticket { get; set; }
         public virtual User User { get; set; }
     }

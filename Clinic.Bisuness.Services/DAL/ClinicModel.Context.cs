@@ -28,6 +28,7 @@ namespace Clinic.Bisuness.Services.DAL
         public virtual DbSet<Address> Address { get; set; }
         public virtual DbSet<Doctor> Doctor { get; set; }
         public virtual DbSet<Patient> Patient { get; set; }
+        public virtual DbSet<ReservedTickets> ReservedTickets { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<SessionToken> SessionToken { get; set; }
         public virtual DbSet<Speciality> Speciality { get; set; }

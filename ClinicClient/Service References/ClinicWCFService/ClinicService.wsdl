@@ -91,6 +91,18 @@
   <wsdl:message name="IClinicService_GetPatientVisits_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetPatientVisitsResponse" />
   </wsdl:message>
+  <wsdl:message name="IClinicService_SetReservation_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetReservation" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_SetReservation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetReservationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_AbortReservation_InputMessage">
+    <wsdl:part name="parameters" element="tns:AbortReservation" />
+  </wsdl:message>
+  <wsdl:message name="IClinicService_AbortReservation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AbortReservationResponse" />
+  </wsdl:message>
   <wsdl:portType name="IClinicService">
     <wsdl:operation name="Authorize">
       <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/Authorize" message="tns:IClinicService_Authorize_InputMessage" />
@@ -147,6 +159,14 @@
     <wsdl:operation name="GetPatientVisits">
       <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/GetPatientVisits" message="tns:IClinicService_GetPatientVisits_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IClinicService/GetPatientVisitsResponse" message="tns:IClinicService_GetPatientVisits_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetReservation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/SetReservation" message="tns:IClinicService_SetReservation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicService/SetReservationResponse" message="tns:IClinicService_SetReservation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AbortReservation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IClinicService/AbortReservation" message="tns:IClinicService_AbortReservation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IClinicService/AbortReservationResponse" message="tns:IClinicService_AbortReservation_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IClinicService" type="tns:IClinicService">
@@ -270,6 +290,24 @@
     </wsdl:operation>
     <wsdl:operation name="GetPatientVisits">
       <soap:operation soapAction="http://tempuri.org/IClinicService/GetPatientVisits" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetReservation">
+      <soap:operation soapAction="http://tempuri.org/IClinicService/SetReservation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AbortReservation">
+      <soap:operation soapAction="http://tempuri.org/IClinicService/AbortReservation" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

@@ -67,6 +67,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\ClinicTimer.cs" />
     <Compile Include="Classes\DBHelper.cs" />
     <Compile Include="Classes\Invoker.cs" />
     <Compile Include="Classes\Logger.cs" />
@@ -93,6 +94,9 @@
       <DependentUpon>ClinicModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\Patient.cs">
+      <DependentUpon>ClinicModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ReservedTickets.cs">
       <DependentUpon>ClinicModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\Role.cs">

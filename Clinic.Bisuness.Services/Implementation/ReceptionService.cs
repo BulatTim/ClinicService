@@ -7,6 +7,9 @@ using Clinic.Bisuness.Services.Classes;
 using Clinic.Bisuness.Services.DAL;
 using Clinic.Bisuness.Services.Interfaces;
 using Clinic.DTO;
+using System.Data.Entity;
+using System.Web;
+
 
 
 namespace Clinic.Bisuness.Services.Implementation
@@ -17,7 +20,7 @@ namespace Clinic.Bisuness.Services.Implementation
         /// Returns tickets list for entering doctor
         /// </summary>
         [HandleError(true)]
-        public List<TicketInfo> GetTickets(int doctorId, DateTime date, Guid guid)
+        public List<TicketInfo> GetTickets(int doctorId, DateTime date, Guid guid,double timeout)
         {
             return DBHelper.Execute(context =>
             {
@@ -31,6 +34,7 @@ namespace Clinic.Bisuness.Services.Implementation
                    && t.DateTime.Month == date.Month && t.DateTime.Day == date.Day).ToList()
                    .Select(x => new TicketInfo
                    {
+                       Id = x.Id,
                        DoctorInfo = new DoctorInfo
                        {
                            Id = x.DoctorId
@@ -43,7 +47,18 @@ namespace Clinic.Bisuness.Services.Implementation
                            LastName = x.Patient.LastName
                        }
                    }).ToList();
-                return freeTicketsListInfo.Except(reservedTicketsList, new TicketEqualityComparer()).Union(reservedTicketsList).OrderBy(x => x.DateTime).ToList();
+                var expiredDate = DateTime.Now.AddMilliseconds(-timeout);
+                var expiredList = context.ReservedTickets.Where(x => x.AddedDateTime < expiredDate);
+                context.ReservedTickets.RemoveRange(expiredList);
+                context.SaveChanges();
+                var tempTicketsList =
+                    context.ReservedTickets.Where(
+                        x => x.DoctorId == doctorId && x.AddedDateTime > expiredDate)
+                        .ToList()
+                        .Select(
+                            x => new TicketInfo {DateTime = x.DateTime, DoctorInfo = new DoctorInfo {Id = x.DoctorId}})
+                        .ToList();
+                return freeTicketsListInfo.Except(reservedTicketsList, new TicketEqualityComparer()).Union(reservedTicketsList).Except(tempTicketsList,new TicketEqualityComparer()).OrderBy(x => x.DateTime).ToList();
             }, guid);
 
 
@@ -56,7 +71,7 @@ namespace Clinic.Bisuness.Services.Implementation
         public List<PatientInfo> GetMedicalRecords(Guid guid)
         {
 
-            return DBHelper.Execute(context => context.Patient.ToList()
+            return DBHelper.Execute(context => context.Patient.Where(x => x.LastName != "reserved").ToList()
                 .Select(x => new PatientInfo
                 {
                     Id = x.Id,
@@ -130,6 +145,8 @@ namespace Clinic.Bisuness.Services.Implementation
             }, guid);
 
         }
+
+        
         /// <summary>
         /// Deletes ticket from database.
         /// </summary>
@@ -143,5 +160,35 @@ namespace Clinic.Bisuness.Services.Implementation
                 return context.SaveChanges() > 0;
             }, guid);
         }
+
+       [HandleError(true)]
+        public int SetReservation(TicketInfo ticketInfo, Guid guid)
+       {
+           return DBHelper.Execute(context =>
+           {
+              var tempTicket= context.ReservedTickets.Add(new ReservedTickets
+               {
+                   DoctorId = ticketInfo.DoctorInfo.Id,
+                   DateTime = ticketInfo.DateTime,
+                   AddedDateTime = DateTime.Now
+               });
+               context.SaveChanges();
+               return tempTicket.Id;
+           }, guid);
+       }
+
+       [HandleError(true)]
+       public void AbortReservation(int tempTicketId)
+       {
+           DBHelper.ExecuteWithoutGuid(context =>
+           {
+               var tempTicket = context.ReservedTickets.Find(tempTicketId);
+               if (tempTicket != null)
+               {
+                   context.ReservedTickets.Remove(tempTicket);
+                   context.SaveChanges();
+               }
+           });
+       }
     }
 }

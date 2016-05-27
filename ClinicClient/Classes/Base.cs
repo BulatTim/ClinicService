@@ -84,10 +84,12 @@ namespace ClinicClient.Classes
             if (AdminAction != null)
             {
                 AdminAction(this, e);
+                AdminAction = null;
             }
             if (ReceptionAction != null)
             {
                 ReceptionAction(this,e);
+                ReceptionAction = null;
             }
             
         }

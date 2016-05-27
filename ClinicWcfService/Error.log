@@ -3,3 +3,14 @@
 Parameter name: entity
 2016-05-26 17:26:35,877 ERROR ErrorAppender - Object reference not set to an instance of an object.
 2016-05-26 17:29:07,861 ERROR ErrorAppender - ¬ведены неверные им€ пользовател€ или пароль
+2016-05-27 10:45:22,020 ERROR ErrorAppender - A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections. (provider: Named Pipes Provider, error: 40 - Could not open a connection to SQL Server)
+2016-05-27 11:53:49,957 ERROR ErrorAppender - An object with the same key already exists in the ObjectStateManager. The ObjectStateManager cannot track multiple objects with the same key.
+2016-05-27 11:58:32,939 ERROR ErrorAppender - An object with the same key already exists in the ObjectStateManager. The ObjectStateManager cannot track multiple objects with the same key.
+2016-05-27 14:57:15,525 ERROR ErrorAppender - Value cannot be null.
+Parameter name: entity
+2016-05-27 15:02:02,653 ERROR ErrorAppender - Value cannot be null.
+Parameter name: entity
+2016-05-27 16:37:02,050 ERROR ErrorAppender - LINQ to Entities does not recognize the method 'System.DateTime AddMilliseconds(Double)' method, and this method cannot be translated into a store expression.
+2016-05-27 16:43:44,453 ERROR ErrorAppender - An error occurred while updating the entries. See the inner exception for details.
+2016-05-27 16:44:46,128 ERROR ErrorAppender - An error occurred while updating the entries. See the inner exception for details.
+2016-05-27 17:20:42,276 ERROR ErrorAppender - An error occurred while updating the entries. See the inner exception for details.

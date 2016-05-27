@@ -49,5 +49,9 @@ namespace ClinicWcfService
 
         [OperationContract]
         List<TicketInfo> GetPatientVisits(int patientId, Guid guid);
+        [OperationContract]
+        int SetReservation(TicketInfo ticketInfo, Guid guid);
+        [OperationContract]
+        void AbortReservation(int ticketId);
     }
 }

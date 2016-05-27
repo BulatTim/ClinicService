@@ -5,11 +5,13 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Web.Configuration;
 using Clinic.Bisuness.Services.Implementation;
 using Clinic.DTO;
 using Clinic.Bisuness.Services.Interfaces;
 using Clinic.Bisuness.Services.Classes;
 using Microsoft.Practices.Unity;
+using System.Web.Configuration;
 
 namespace ClinicWcfService
 {
@@ -56,8 +58,8 @@ namespace ClinicWcfService
         }
         public IList<TicketInfo> GetTickets(int doctorId, DateTime date, Guid guid)
         {
-
-            return Invoker.Invoke(ReceptionService.GetTickets, doctorId, date, guid);
+            var timeout = double.Parse(WebConfigurationManager.AppSettings["timeout"]);
+            return Invoker.Invoke(ReceptionService.GetTickets, doctorId, date, guid,timeout);
         }
 
         public IList<PatientInfo> GetMedicalRecords(Guid guid)
@@ -114,6 +116,14 @@ namespace ClinicWcfService
 
              return Invoker.Invoke(CommonService.GetPatientVisits, patientId, guid);
          }
+        public int SetReservation(TicketInfo ticketInfo, Guid guid)
+         {
+            return Invoker.Invoke(ReceptionService.SetReservation, ticketInfo,guid);
+         }
+        public void AbortReservation(int ticketId)
+        {
+            Invoker.InvokeAction(ReceptionService.AbortReservation, ticketId);
+        }
     }
         
     

@@ -98,6 +98,18 @@ namespace ClinicClient.ClinicWCFService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClinicService/GetPatientVisits", ReplyAction="http://tempuri.org/IClinicService/GetPatientVisitsResponse")]
         System.Threading.Tasks.Task<System.Collections.Generic.List<Clinic.DTO.TicketInfo>> GetPatientVisitsAsync(int patientId, System.Guid guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClinicService/SetReservation", ReplyAction="http://tempuri.org/IClinicService/SetReservationResponse")]
+        int SetReservation(Clinic.DTO.TicketInfo ticketInfo, System.Guid guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClinicService/SetReservation", ReplyAction="http://tempuri.org/IClinicService/SetReservationResponse")]
+        System.Threading.Tasks.Task<int> SetReservationAsync(Clinic.DTO.TicketInfo ticketInfo, System.Guid guid);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClinicService/AbortReservation", ReplyAction="http://tempuri.org/IClinicService/AbortReservationResponse")]
+        void AbortReservation(int ticketId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IClinicService/AbortReservation", ReplyAction="http://tempuri.org/IClinicService/AbortReservationResponse")]
+        System.Threading.Tasks.Task AbortReservationAsync(int ticketId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -237,6 +249,22 @@ namespace ClinicClient.ClinicWCFService {
         
         public System.Threading.Tasks.Task<System.Collections.Generic.List<Clinic.DTO.TicketInfo>> GetPatientVisitsAsync(int patientId, System.Guid guid) {
             return base.Channel.GetPatientVisitsAsync(patientId, guid);
+        }
+        
+        public int SetReservation(Clinic.DTO.TicketInfo ticketInfo, System.Guid guid) {
+            return base.Channel.SetReservation(ticketInfo, guid);
+        }
+        
+        public System.Threading.Tasks.Task<int> SetReservationAsync(Clinic.DTO.TicketInfo ticketInfo, System.Guid guid) {
+            return base.Channel.SetReservationAsync(ticketInfo, guid);
+        }
+        
+        public void AbortReservation(int ticketId) {
+            base.Channel.AbortReservation(ticketId);
+        }
+        
+        public System.Threading.Tasks.Task AbortReservationAsync(int ticketId) {
+            return base.Channel.AbortReservationAsync(ticketId);
         }
     }
 }

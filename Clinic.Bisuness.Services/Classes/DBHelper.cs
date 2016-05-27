@@ -29,6 +29,18 @@ namespace Clinic.Bisuness.Services.Classes
                 }
 
         }
+        //public static void Execute(Action<ClinicContext> func, Guid guid)
+        //{
+
+        //    if (!ValidationService.IsValidToken(guid))
+        //        throw new UnauthorizedAccessException("Доступ запрещен");
+        //    using (var db = new ClinicContext())
+        //    {
+        //        db.Database.Connection.Open();
+        //        func(db);
+        //    }
+
+        //}
     
         public static T ExecuteWithoutGuid<T>(Func<ClinicContext, T> func)
         {
